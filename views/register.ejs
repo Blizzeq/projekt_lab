@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rejestracja</title>
+    <link rel="stylesheet" type="text/css" href="./style/register.css">
+</head>
+<body>
+    <h2>Rejestracja</h2>
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/register" method="post">
+        <input type="text" name="firstName" placeholder="Imię" required><br>
+        <input type="text" name="lastName" placeholder="Nazwisko" required><br>
+        <input type="text" name="username" placeholder="Nazwa użytkownika" required><br>
+        <input type="password" name="password" placeholder="Hasło" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="text" name="phone" placeholder="Telefon"><br>
+        <input type="checkbox" name="isAdmin" value="1"> Administrator<br>
+        <button type="submit">Zarejestruj się</button>
+    </form>
+    <p>Masz już konto? <a href="/login">Zaloguj się</a></p>
+</body>
+</html>
