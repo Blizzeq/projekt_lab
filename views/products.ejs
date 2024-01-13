@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produkty</title>
+    <link rel="stylesheet" type="text/css" href="./style/products.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Panel Użytkownika</h1>
+            <a href="/logout" class="logout-btn">Wyloguj się</a>
+        </div>
+        <h2>Lista Produktów</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Cena (zł)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(function(product) { %>
+                <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td><%= product.price %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
