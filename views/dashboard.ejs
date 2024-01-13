@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./style/dashboard.css">
+    <script>
+        function toggleAddProductForm() {
+            var form = document.getElementById("addProductForm");
+            var overlay = document.getElementById("overlay");
+            if (!form.style.display || form.style.display === "none") {
+                form.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                form.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    
+        function toggleAddUserForm() {
+            var form = document.getElementById("addUserForm");
+            var overlay = document.getElementById("overlay");
+            if (!form.style.display || form.style.display === "none") {
+                form.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                form.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Panel Administratora</h1>
+            <a href="/logout" class="logout-btn">Wyloguj się</a>
+        </div>
+        <h2>Lista Produktów</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Cena (zł)</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(function(product) { %>
+                <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td><%= product.price %></td>
+                    <td>
+                        <a href="/edit-product/<%= product.id %>" class="edit-btn">Edytuj</a>
+                        <a href="/delete-product/<%= product.id %>" class="delete-btn">Usuń</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <button onclick="toggleAddProductForm()" class="button">Dodaj Nowy Produkt</button>
+
+    <h2>Lista Użytkowników</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(user) { %>
+                <tr>
+                    <td><%= user.firstName %></td>
+                    <td><%= user.lastName %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.phone %></td>
+                    <td>
+                        <a href="/edit-user/<%= user.id %>" class="edit-btn">Edytuj</a>
+                        <a href="/delete-user/<%= user.id %>" class="delete-btn">Usuń</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <button onclick="toggleAddUserForm()" class="button">Dodaj Nowego Użytkownika</button>
+
+    <div id="overlay"></div>
+
+    <div id="addProductForm">
+        <h2>Dodaj Nowy Produkt</h2>
+        <form action="/add-product" method="post">
+            <input type="text" name="name" placeholder="Nazwa produktu" required><br>
+            <input type="text" name="description" placeholder="Opis" required><br>
+            <input type="number" name="price" placeholder="Cena" required step="any"><br>
+            <button type="submit" class="button">Dodaj produkt</button>
+            <button type="button" onclick="toggleAddProductForm()" class="button">Anuluj</button>
+        </form>
+    </div>
+
+    <div id="addUserForm">
+        <h2>Dodaj Nowego Użytkownika</h2>
+        <form action="/add-user" method="post">
+            <input type="text" name="firstName" placeholder="Imię" required><br>
+            <input type="text" name="lastName" placeholder="Nazwisko" required><br>
+            <input type="text" name="username" placeholder="Nazwa użytkownika" required><br>
+            <input type="password" name="password" placeholder="Hasło" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="text" name="phone" placeholder="Telefon"><br>
+            <input type="checkbox" name="isAdmin" value="1"> Administrator<br>
+            <button type="submit" class="button">Dodaj użytkownika</button>
+            <button type="button" onclick="toggleAddUserForm()" class="button">Anuluj</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
