@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Błąd</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .error-container {
+            text-align: center;
+        }
+        .error-message {
+            color: #d9534f;
+            margin: 20px 0;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Błąd</h1>
+        <p class="error-message"><%= errorMessage %></p>
+        <a href="/login" class="button">Powrót do Logowania</a>
+    </div>
+</body>
+</html>
