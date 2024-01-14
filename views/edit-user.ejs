@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edytuj Użytkownika</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; 
+        }
+
+        .button {
+            padding: 10px 15px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: #5cb85c;
+        }
+
+        .cancel-btn {
+            background-color: #f0ad4e;
+            margin-left: 10px;
+        }
+
+        .save-btn:hover {
+            background-color: #4cae4c;
+        }
+
+        .cancel-btn:hover {
+            background-color: #ec971f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edytuj Użytkownika</h1>
+    <form action="/edit-user/<%= user.id %>" method="post">
+        <label for="name">Imię:</label>
+        <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" required><br>
+
+        <label for="description">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" required><br>
+
+        <label for="price">Nazwa użytkownika:</label>
+        <input type="text" id="username" name="username" value="<%= user.username %>" required><br>
+
+        <label for="price">Email:</label>
+        <input type="email" id="email" name="email" value="<%= user.email %>" required><br>
+
+        <label for="price">Telefon:</label>
+        <input type="text" id="phone" name="phone" value="<%= user.phone %>" required><br>
+
+        <label for="isAdmin">Administrator:</label>
+        <input type="checkbox" id="isAdmin" name="isAdmin" value="1" <%= user.isAdmin == 1 ? 'checked' : '' %>><br>
+
+        <button type="button" onclick="togglePasswordForm()" class="button">Zmień Hasło</button>
+        <div id="passwordForm" style="display: none;">
+            <label for="password">Nowe Hasło:</label>
+            <input type="password" id="password" name="password"><br>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <button type="submit" class="button save-btn">Zapisz zmiany</button>
+            <a href="/dashboard" class="button cancel-btn">Anuluj</a>
+        </div>
+    </form>
+
+    <script>
+        function togglePasswordForm() {
+            var passwordForm = document.getElementById("passwordForm");
+            if (passwordForm.style.display === "none") {
+                passwordForm.style.display = "block";
+            } else {
+                passwordForm.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
