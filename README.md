@@ -1,5 +1,13 @@
 # Dokumentacja API
 
+## Uruchomienie Aplikacji
+
+Aby uruchomić aplikację, wykonaj następujące kroki:
+
+1. Otwórz terminal i przejdź do folderu `projekt_lab`.
+2. Uruchom komendę `npm install` aby zainstalować wszystkie zależności projektu.
+3. Następnie, będąc w folderze `projekt_lab`, uruchom aplikację komendą `node app.js`.
+
 ## Ogólne Informacje
 
 - **URL**: `http://localhost:3000`
